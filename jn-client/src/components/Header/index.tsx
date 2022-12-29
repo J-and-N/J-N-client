@@ -10,18 +10,42 @@ import WCamera from "public/images/WCamera.svg";
 import UserIcon from "public/images/UserIcon.svg";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { toast } from "react-toastify";
+import { useEffect, useState } from "react";
 
 const Header = () => {
-  const route = useRouter();
-  const ad = route.pathname as string;
+  const router = useRouter();
+  const ad = router.pathname as string;
+  const [username, setUsername] = useState("");
+
+  useEffect(() => {
+    const user = localStorage.getItem("username");
+    user ? setUsername(user) : "";
+  }, []);
 
   const adFillter = (e: string, a: string) => {
     return a == e ? true : false;
   };
+
+  const onSubmit = () => {
+    localStorage.removeItem("Farm_accessToken");
+    localStorage.removeItem("Farm_refreshToken");
+    localStorage.removeItem("id");
+    localStorage.removeItem("username");
+    toast.success("로그아웃 되었습니다");
+    return router.push("/");
+  };
+
   return (
     <>
       <S.Header>
-        <S.Logo>J&N</S.Logo>
+        <S.Logo
+          onClick={() => {
+            router.push("/Server");
+          }}
+        >
+          J&N
+        </S.Logo>
         <S.MenuWrap>
           <Link href="Statu">
             <S.Menu state={adFillter("/Statu", ad)}>
@@ -61,8 +85,8 @@ const Header = () => {
             <UserIcon />
           </S.UserIcon>
           <S.Wrap>
-            <S.UserName>Hi, Userasdfname</S.UserName>
-            <S.Signout>Sign Out</S.Signout>
+            <S.UserName>Hi, {username}</S.UserName>
+            <S.Signout onClick={onSubmit}>Sign Out</S.Signout>
           </S.Wrap>
         </S.UserWrap>
       </S.Header>

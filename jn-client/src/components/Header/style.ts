@@ -18,6 +18,7 @@ export const Logo = styled.div`
   font-size: 50px;
   font-family: "IM Fell Great Primer SC";
   color: white;
+  cursor: pointer;
 `;
 
 export const MenuWrap = styled.div`
