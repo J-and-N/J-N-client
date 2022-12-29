@@ -22,6 +22,18 @@ export const InputWrapper = styled.div`
   justify-content: center;
   align-items: center;
 `;
+export const InputWrap = styled.div`
+  width: 100%;
+  position: relative;
+  display: flex;
+  span {
+    position: absolute;
+    top: 67px;
+    opacity: 0.5;
+    color: red;
+    margin-left: 10px;
+  }
+`;
 export const Input = styled.input`
   width: 500px;
   height: 60px;
@@ -29,8 +41,6 @@ export const Input = styled.input`
   font-size: 20px;
   border: none;
   outline: none;
-  /* background: #eeeeee; */
-  /* background: #f2f2f2; */
   background: #fff;
   margin-bottom: 40px;
   border-radius: 15px;
