@@ -1,15 +1,20 @@
 import * as S from "./style";
-import GraphRe from "../GraphRe";
+import GraphRe from "../GraphReTemp";
 
-// type GraphType = { Date: string };
-const TemperatureRe = ({ Date }: { Date: string }) => {
+const TemperatureRe = ({
+  Date,
+  TEMP,
+}: {
+  Date: string;
+  TEMP: number | undefined;
+}) => {
   return (
     <S.Wrapper>
       <S.TempWrapper>
         <S.Title>{Date}</S.Title>
-        <S.Line></S.Line>
+        <S.Line />
         <S.Graph>
-          <GraphRe col={"#fa5f5f"} />
+          <GraphRe col={"#fa5f5f"} temp={TEMP} />
         </S.Graph>
         <S.GraphInfo>
           <p>0°C</p>
@@ -18,7 +23,7 @@ const TemperatureRe = ({ Date }: { Date: string }) => {
         <S.TempInfo>
           <S.TText>TEMP</S.TText>
           <S.Info>
-            <S.TNum>25</S.TNum>
+            <S.TNum>{TEMP?.toFixed(0)}</S.TNum>
             <S.TC>°C</S.TC>
           </S.Info>
         </S.TempInfo>

@@ -1,13 +1,16 @@
 import * as S from "./style";
-import Graph from "../Graph";
-const Temperature = () => {
+import Graph from "../GraphTemp";
+import { Temptype } from "../../../types/graph";
+import { NextPage } from "next";
+import dateFillter from "../../../Util/lib/dateFillter";
+const Temperature: NextPage<Temptype> = ({ id, TEMP, TIME }) => {
   return (
     <S.Wrapper>
       <S.TempWrapper>
         <S.Title>Temperature</S.Title>
         <S.Line></S.Line>
         <S.Graph>
-          <Graph col={"#fa5f5f"} />
+          <Graph col={"#fa5f5f"} temp={TEMP} />
         </S.Graph>
         <S.GraphInfo>
           <p>0°C</p>
@@ -16,12 +19,12 @@ const Temperature = () => {
         <S.TempInfo>
           <S.TText>TEMP</S.TText>
           <S.Info>
-            <S.TNum>25</S.TNum>
+            <S.TNum>{TEMP}</S.TNum>
             <S.TC>°C</S.TC>
           </S.Info>
         </S.TempInfo>
       </S.TempWrapper>
-      <S.Date>2022-10-27 22:24:32</S.Date>
+      <S.Date>{dateFillter(TIME)}</S.Date>
     </S.Wrapper>
   );
 };
