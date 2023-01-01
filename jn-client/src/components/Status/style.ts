@@ -129,10 +129,31 @@ export const WGraph = styled.div`
   align-items: center;
 `;
 export const G = styled.div`
+  position: relative;
   width: 160px;
   height: 240px;
   border: 5px solid #000;
   border-radius: 20px;
+`;
+
+type WGType = { state: number | undefined };
+
+export const WG = styled.div<WGType>`
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: calc(10% * ${(e) => e.state});
+  background: #5b7fff;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  span {
+    position: absolute;
+    bottom: 0;
+    left: 42%;
+    font-size: 100px;
+    color: red;
+    display: ${(e) => (e.state == 0 ? "block" : "none")};
+  }
 `;
 
 export const Date = styled.div`
@@ -173,20 +194,23 @@ export const ServerList = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  /* flex-direction: column; */
   padding: 10px;
 `;
 
 export const ListWrap = styled.div`
   width: 33%;
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  justify-content: space-evenly;
   padding: 0 20px;
 `;
 
 export const State = styled.div<Statetype>`
   width: 30px;
   height: 30px;
-  background: ${(e) => e.state};
+  background: ${(e) =>
+    e.state == 1 ? "#05ff00" : e.state == 2 ? "gray" : "black"};
   border-radius: 50%;
 `;
 export const LServername = styled.div`
@@ -195,8 +219,8 @@ export const LServername = styled.div`
 
 export const SDetail = styled.div`
   position: absolute;
-  font-size: 15px;
+  font-size: 12px;
   color: #878787;
   bottom: 10px;
 `;
-type Statetype = { state: string };
+type Statetype = { state: number };
