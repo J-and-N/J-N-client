@@ -36,14 +36,15 @@ export const TIWrap = styled.div`
   justify-content: space-between;
   align-items: flex-end;
 
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 `;
 
 export const Title = styled.div`
   font-size: 30px;
+  cursor: pointer;
 `;
 export const IconWrap = styled.div`
-  width: 11%;
+  width: 14%;
   display: flex;
   justify-content: space-between;
 `;
@@ -60,7 +61,7 @@ export const Url = styled.div`
   }
 `;
 export const Explanation = styled.div`
-  margin: 20px 0 0 20px;
+  margin: 30px 0 0 20px;
   p {
     margin: 0 0 10px -20px;
     font-size: 17px;
